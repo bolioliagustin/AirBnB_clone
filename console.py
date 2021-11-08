@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+""" Console Airbnb"""
 import cmd
 
 class HBNBCommand(cmd.Cmd):
