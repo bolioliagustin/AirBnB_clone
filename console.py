@@ -3,8 +3,10 @@
 import cmd
 import sys
 from models.base_model import BaseModel
+from models.user import User
+from models import storage
 
-props = {"BaseModel": BaseModel}
+props = {"BaseModel": BaseModel, "User": User}
 
 class HBNBCommand(cmd.Cmd):
     """Prompt Project Airbnb"""
@@ -26,27 +28,69 @@ class HBNBCommand(cmd.Cmd):
         str_list = line.split(" ")
         if str_list == 0:
             print("** class name missing **")
-        if str_list[0] in props and len(str_list) == 1:
-            new_obj = props[str_list[0]]()
-            new_obj.save()
-            print(new_obj.id)
+        if str_list[0] == "BaseModel":
+            new_instance = BaseModel()
+            new_instance.save()
+            print(new_instance.id)
         else:
             print("** class doesn't exist **")
+
+  
     
     def do_show(self, line):
-        """Prints the string representation of an instance 
+        """Prints the object representation of an instance 
         based on the class name and id"""
         str_list = line.split(" ")
-        if str_list != 0:
-            if str_list[0] in props and str_list[1] in props[id]:
-                print(self.__str__(props[str_list[0]]))
-            if str_list[0] not in props:
-                print("*** class doesn't exist ***")
-            if str_list[1] not in props[id]:
-                print("*** instance id missing ***")           
+        if str_list == 0:
+            print("** class name missing **")
+        elif str_list[0] not in props:
+            print("** class doesn't exist **")
+        elif str_list[0] in props and len(str_list) == 1:
+            print("** instance id missing **")
+        if len(str_list) == 2:
+            key = str_list[0] + "." + str_list[1]
+            if key in storage.all():
+                print(storage.all()[key])
+            else:
+                print("** no instance found **")
         else:
-            print("*** class name missing ***")
-            
+            pass
+
+    def do_destroy(self, line):
+        """Deletes an instance based on the class name and id"""
+        str_list = line.split(" ")
+        if str_list == 0:
+            print("** class name missing **")
+        elif str_list[0] not in props:
+            print("** class doesn't exist **")
+        elif str_list[0] in props and len(str_list) == 1:
+            print("** instance id missing **")
+        if len(str_list) == 2:
+            key = str_list[0] + "." + str_list[1]
+            if key in storage.all():
+                del storage.all()[key]
+                storage.save()
+            else:
+                print("** no instance found **")
+        else:
+            pass
+
+    def do_all(self, line):
+        """Prints all string representation of all instances 
+        based or not on the class name"""
+        if line == "":
+            for i in storage.all().values():
+                print(i)
+        else:
+            str_list = line.split(" ")
+            if str_list[0] not in props:
+                print("** class doesn't exist **")
+            elif len(str_list) == 1:
+                for i in storage.all():
+                    if i == str_list[0]:
+                        print(i)
+            else:
+                pass
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

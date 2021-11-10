@@ -2,10 +2,11 @@
 """ Storage Json"""
 
 
+from models.user import User
 from models.base_model import BaseModel
 import json
 
-
+props = {"BaseModel": BaseModel, "User": User}
 
 class FileStorage():
     """ Storage Json """    
@@ -19,9 +20,8 @@ class FileStorage():
 
     def new(self, obj):
         """add object to __objects"""
-        if obj:
-            key = "{}.{}".format(type(obj).__name__, obj.id)
-            self.__objects[key] = obj
+        key = "{}.{}".format(type(obj).__name__, obj.id)
+        self.__objects[key] = obj
 
     def save(self):
         """save to JSON file"""
@@ -37,6 +37,7 @@ class FileStorage():
             with open(self.__file_path, 'r') as f:
                 jso = json.load(f)
                 for key, value in jso.items():
-                    self.__objects[key] = BaseModel(**value)
+                    splitt = key.split('.')[0]
+                    self.__objects[key] = props[splitt](**value)
         except:
             pass

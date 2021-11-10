@@ -19,6 +19,7 @@ class BaseModel():
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
             storage.new(self)
+            storage.save()
 
     def __str__(self):
         """creat a string"""
