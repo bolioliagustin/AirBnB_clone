@@ -8,6 +8,7 @@ from models import storage
 
 props = {"BaseModel": BaseModel, "User": User}
 
+
 class HBNBCommand(cmd.Cmd):
     """Prompt Project Airbnb"""
     prompt = "(hbnb) "
@@ -21,9 +22,9 @@ class HBNBCommand(cmd.Cmd):
         'Quit command to exit the program'
         exit()
         return True
-    
-    def do_create(self,line):
-        """Creates a new instance of BaseModel, 
+
+    def do_create(self, line):
+        """Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id."""
         str_list = line.split(" ")
         if str_list == 0:
@@ -35,10 +36,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-  
-    
     def do_show(self, line):
-        """Prints the object representation of an instance 
+        """Prints the object representation of an instance
         based on the class name and id"""
         str_list = line.split(" ")
         if str_list == 0:
@@ -76,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
             pass
 
     def do_all(self, line):
-        """Prints all string representation of all instances 
+        """Prints all string representation of all instances
         based or not on the class name"""
         if line == "":
             for i in storage.all().values():

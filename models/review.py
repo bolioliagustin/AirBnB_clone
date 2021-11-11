@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-
-
-
+""" Class Review """
 from models.base_model import BaseModel
 
 
@@ -13,4 +11,4 @@ class Review(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """ Initialize Review class """
-        super().__init__(**kwargs)
+        super()._i_init__(**kwargs)

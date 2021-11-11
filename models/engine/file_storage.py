@@ -8,8 +8,9 @@ import json
 
 props = {"BaseModel": BaseModel, "User": User}
 
+
 class FileStorage():
-    """ Storage Json """    
+    """ Storage Json """
     def __init__(self):
         self.__file_path = "file.json"
         self.__objects = {}
@@ -26,11 +27,11 @@ class FileStorage():
     def save(self):
         """save to JSON file"""
         dic_json = {}
-        for key,value in self.__objects.items():
+        for key, value in self.__objects.items():
             dic_json[key] = value.to_dict()
             with open(self.__file_path, 'w') as f:
                 json.dump(dic_json, f)
-    
+
     def reload(self):
         """Deserialize the JSON file"""
         try:
