@@ -85,9 +85,21 @@ class HBNBCommand(cmd.Cmd):
             if str_list[0] not in props:
                 print("** class doesn't exist **")
             elif len(str_list) == 1:
-                for k, v in storage.all().items():
-                    if str_list[0] in k:
-                        print(str(v))
+                for key, value in storage.all().items():
+                    if str_list[0] in key:
+                        print(str(value))
+
+    def do_update(self, line):
+        str_line = line.split(" ")
+
+        if str_line[0] is not in props:
+            print("** class doesn't exist **")
+        if (len(str_list)) == 0:
+            print ("** class name missing **")
+        if (len(str_list)) == 1:
+            print ("** no instance found **")
+        if(len(str_list)) == 2:
+            print ("")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
