@@ -91,23 +91,26 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         str_line = line.split(" ")
-
-        if len(str_line) == 0:
-            print ("** class name missing **")
-        if len(str_line) == 1:
-            print ("** class doesn't exist **")
-        if len(str_line) == 2:
-            print ("** attribute name missing **")
-        if len(str_line) == 3:
-            print ("** value missing **")
-        if str_line[0] not in props:
-            print ("** class doesn't exist **")
-        objectsall = storage.all()
-        for ids in objectsall.keys():
-            print (ids)
-#            if ids == str_line[1]:
-#                setattr(objectsall[ids], str_line[2], str_line[3])
-#               storage.save()
-#            print ("** no instance found **")
+        if str_line == 0:
+            print("** class name missing **")
+        elif str_line[0] not in props:
+            print("** class doesn't exist **")
+        elif str_line[0] in props and len(str_line) == 1:
+            print("** instance id missing **")
+        elif str_line[0] in props and len(str_line) == 2:
+            print("** attribute name missing **")
+        elif str_line[0] in props and len(str_line) == 3:
+            print("** value missing **")
+        elif str_line[0] in props and len(str_line) == 4:
+            key = str_line[0] + "." + str_line[1]
+            if key in storage.all():
+                if str_line[2] in storage.all()[key].__dict__:
+                    storage.all()[key].__dict__[str_line[2]] = str_line[3]
+                    storage.all()[key].save()
+                else:
+                    print("** no instance found **")
+            else:
+                print("** no instance found **")
+        
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
