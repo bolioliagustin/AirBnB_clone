@@ -4,9 +4,13 @@ import cmd
 import sys
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 from models import storage
 
-props = {"BaseModel": BaseModel, "User": User}
+props = {"BaseModel": BaseModel, "User": User,"State": State, "City": City, "Amenity": Amenity, "Review": Review}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -29,8 +33,8 @@ class HBNBCommand(cmd.Cmd):
         str_list = line.split(" ")
         if str_list == 0:
             print("** class name missing **")
-        if str_list[0] == "BaseModel":
-            new_instance = BaseModel()
+        if str_list[0] == props:
+            new_instance = props[str_list[0]]()
             new_instance.save()
             print(new_instance.id)
         else:
