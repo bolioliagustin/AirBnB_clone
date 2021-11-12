@@ -104,13 +104,8 @@ class HBNBCommand(cmd.Cmd):
         elif str_line[0] in props and len(str_line) == 4:
             key = str_line[0] + "." + str_line[1]
             if key in storage.all():
-                if str_line[2] in storage.all()[key].__dict__:
-                    storage.all()[key].__dict__[str_line[2]] = str_line[3]
-                    storage.all()[key].save()
-                else:
-                    print("** no instance found **")
-            else:
-                print("** no instance found **")
+                for key in storage.all():
+                    print(key)
         
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
