@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" Class Place """
+""" Initialize class Place """
+
 
 from models.base_model import BaseModel
 

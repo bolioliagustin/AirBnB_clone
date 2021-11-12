@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" Initialize class User """
 
 
 from models.base_model import BaseModel
