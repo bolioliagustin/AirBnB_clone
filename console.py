@@ -92,24 +92,22 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, line):
         str_line = line.split(" ")
 
-        if (len(str_line)) == 0:
+        if len(str_line) == 0:
             print ("** class name missing **")
-        if (len(str_line)) == 1:
+        if len(str_line) == 1:
             print ("** class doesn't exist **")
-        if(len(str_line)) == 2:
+        if len(str_line) == 2:
             print ("** attribute name missing **")
         if len(str_line) == 3:
             print ("** value missing **")
-
         if str_line[0] not in props:
             print ("** class doesn't exist **")
-
         objectsall = storage.all()
         for ids in objectsall.keys():
-            if ids == str_line[1]:
-                setattr(objectsall[ids], str_line[2], str_line[3])
-                storage.save()
-                return
-            print ("** no instance found **")
+            print (ids)
+#            if ids == str_line[1]:
+#                setattr(objectsall[ids], str_line[2], str_line[3])
+#               storage.save()
+#            print ("** no instance found **")
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
