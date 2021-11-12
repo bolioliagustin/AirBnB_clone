@@ -33,10 +33,11 @@ class HBNBCommand(cmd.Cmd):
         str_list = line.split(" ")
         if str_list == 0:
             print("** class name missing **")
-        if str_list[0] == props:
+        if str_list[0] in props:
             new_instance = props[str_list[0]]()
             new_instance.save()
             print(new_instance.id)
+            
         else:
             print("** class doesn't exist **")
 
