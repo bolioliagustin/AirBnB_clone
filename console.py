@@ -30,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
         exit()
         return True
 
-    def emptyline(self, line):
+    def emptyline(self):
         "empty linneee"
         pass
 
