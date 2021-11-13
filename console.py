@@ -12,7 +12,8 @@ from models.amenity import Amenity
 from models.review import Review
 from models import storage
 
-props = {"BaseModel": BaseModel, "User": User,"State": State, "City": City, "Amenity": Amenity, "Review": Review}
+props = {"BaseModel": BaseModel, "User": User, "State": State, "City": City,
+         "Amenity": Amenity, "Review": Review}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -39,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
             new_instance = props[str_list[0]]()
             new_instance.save()
             print(new_instance.id)
-            
+
         else:
             print("** class doesn't exist **")
 
@@ -107,11 +108,12 @@ class HBNBCommand(cmd.Cmd):
         elif str_line[0] in props and len(str_line) == 2:
             print("** attribute name missing **")
         elif str_line[0] in props and len(str_line) == 3:
-            print("** value missing **") 
-        else:    
+            print("** value missing **")
+        else:
             key = str_line[0] + "." + str_line[1]
             setattr(storage.all()[key], str_line[2], str_line[3])
             storage.all()[key].save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
