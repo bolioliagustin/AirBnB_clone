@@ -30,6 +30,10 @@ class HBNBCommand(cmd.Cmd):
         exit()
         return True
 
+    def emptyline(self, line):
+        "empty linneee"
+        pass
+
     def do_create(self, line):
         """Creates a new instance of BaseModel,
         saves it (to the JSON file) and prints the id."""
