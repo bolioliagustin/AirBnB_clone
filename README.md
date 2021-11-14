@@ -37,4 +37,6 @@
 
 Mode Interactive:
 
-	![alt text](https://beeimg.com/images/x27455359892.png)
+	(hbnb) help EOF
+	(hbnb) Quit command to exit the program
+	(hbnb) 
