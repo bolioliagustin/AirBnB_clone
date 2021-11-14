@@ -3,7 +3,7 @@
 
 #Description of the Project:
 
-	This project is a clone of website AirBnB .	
+	**This project is a clone of website AirBnB . **
 
 #The Console :
 
