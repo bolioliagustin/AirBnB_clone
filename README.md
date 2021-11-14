@@ -34,3 +34,6 @@
 #Example:
 	Mode Non Interactive:
 	![alt text](https://beeimg.com/images/w01401253702.png)
+
+	Mode Interactive:
+	![alt text](https://beeimg.com/images/y41044120122.png)
