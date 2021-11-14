@@ -35,6 +35,6 @@
 	Mode Non Interactive:
 	![alt text](https://beeimg.com/images/w01401253702.png)
 
-	Mode Interactive:
+Mode Interactive:
 
 	![alt text](https://beeimg.com/images/x27455359892.png)
