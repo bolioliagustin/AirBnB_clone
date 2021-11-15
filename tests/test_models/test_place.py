@@ -2,5 +2,5 @@
 """Test - city"""
 import unittest
 
-class Test(unittest.Testcase):
 
+class Test(unittest.Testcase):

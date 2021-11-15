@@ -2,4 +2,5 @@
 """ Test -amenity"""
 import unittest
 
+
 class Test(unittest.Testcase):
